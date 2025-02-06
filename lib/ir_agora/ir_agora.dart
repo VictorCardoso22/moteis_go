@@ -106,23 +106,23 @@ class _ListPageState extends State<IrAgora> {
                                                     ],
                                                   ),
                                                 ),
-                                                Card(
-                                                  color: Colors.white,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.all(12),
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        ...model.getIcons(suite
-                                                            .categoriaItens)
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
+                                                // Card(
+                                                //   color: Colors.white,
+                                                //   child: Padding(
+                                                //     padding: EdgeInsets.all(12),
+                                                //     child: Row(
+                                                //       mainAxisAlignment:
+                                                //           MainAxisAlignment
+                                                //               .center,
+                                                //       mainAxisSize:
+                                                //           MainAxisSize.max,
+                                                //       children: [
+                                                model.getIcons(
+                                                    suite.categoriaItens),
+                                                //       ],
+                                                //     ),
+                                                //   ),
+                                                // ),
                                                 ...model.getPeriodos(
                                                     suite.periodos),
                                               ],

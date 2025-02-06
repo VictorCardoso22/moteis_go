@@ -55,7 +55,24 @@ class IrAgoraViewmodel extends BaseViewModel {
               width: 46, height: 46, fit: BoxFit.cover)
           : const Icon(Icons.image_not_supported));
     });
-    return icones;
+    return Card(
+      color: Colors.white,
+      child: Padding(
+        padding: EdgeInsets.all(12),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            if (icones.length >= 4) ...icones.take(4) else ...icones,
+            TextButton.icon(
+                iconAlignment: IconAlignment.end,
+                label: Text("ver todos"),
+                onPressed: () {},
+                icon: Icon(Icons.arrow_drop_down_rounded))
+          ],
+        ),
+      ),
+    );
   }
 
   getPeriodos(List<Periodo> periodoList) {

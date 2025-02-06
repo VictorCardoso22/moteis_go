@@ -1,0 +1,1 @@
+ /home/pm5-jequia/Documentos/GitHub/moteis_go/.dart_tool/flutter_build/c92f1557f6987de48d9e1807449292ea/native_assets.yaml: 
