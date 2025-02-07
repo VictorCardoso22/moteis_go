@@ -1,0 +1,1 @@
+ /Users/victorcardoso/Documents/GitHub/moteis_go/.dart_tool/flutter_build/5c9c8da74ca819847951f52e3f1e2042/native_assets.yaml: 

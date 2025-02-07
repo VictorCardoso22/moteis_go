@@ -4,7 +4,7 @@
             "outputFile": "com.example.moteis_go.app-mergeDebugResources-24:/values-fr/values-fr.xml",
             "map": [
                 {
-                    "source": "/home/pm5-jequia/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/res/values-fr/values-fr.xml",
+                    "source": "/Users/victorcardoso/.gradle/caches/transforms-3/889ae3adf7a24645889ee22f4dad2cac/transformed/core-1.13.1/res/values-fr/values-fr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -4,7 +4,7 @@
             "outputFile": "com.example.moteis_go.app-mergeDebugResources-24:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/pm5-jequia/Documentos/GitHub/moteis_go/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/Users/victorcardoso/Documents/GitHub/moteis_go/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

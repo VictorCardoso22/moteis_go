@@ -11,10 +11,10 @@ class IrAgoraViewmodel extends BaseViewModel {
   bool isLoading = true;
 
   IrAgoraViewmodel() {
-    _fetchData();
+    fetchData();
   }
 
-  Future<void> _fetchData() async {
+  Future<void> fetchData() async {
     const url = "https://www.jsonkeeper.com/b/1IXK";
     try {
       final response = await http.get(
@@ -57,6 +57,10 @@ class IrAgoraViewmodel extends BaseViewModel {
     });
     return Card(
       color: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(6.0),
+      ),
+      elevation: 0,
       child: Padding(
         padding: EdgeInsets.all(12),
         child: Row(
@@ -66,9 +70,20 @@ class IrAgoraViewmodel extends BaseViewModel {
             if (icones.length >= 4) ...icones.take(4) else ...icones,
             TextButton.icon(
                 iconAlignment: IconAlignment.end,
-                label: Text("ver todos"),
+                label: Text(
+                  "ver todos",
+                  style: TextStyle(
+                    color: Color(0xFFA1A1A2),
+                  ),
+                  maxLines: 2,
+                  softWrap: true,
+                  overflow: TextOverflow.visible,
+                ),
                 onPressed: () {},
-                icon: Icon(Icons.arrow_drop_down_rounded))
+                icon: Icon(
+                  Icons.arrow_drop_down_rounded,
+                  color: Color(0xFFA1A1A2),
+                ))
           ],
         ),
       ),
@@ -80,8 +95,12 @@ class IrAgoraViewmodel extends BaseViewModel {
     for (var element in periodoList) {
       periodos.add(Card(
         color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6.0),
+        ),
+        elevation: 0,
         child: Padding(
-          padding: EdgeInsets.all(12),
+          padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -93,7 +112,10 @@ class IrAgoraViewmodel extends BaseViewModel {
               ),
               IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.arrow_forward_ios_outlined)),
+                  icon: Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: Color(0xFF838383),
+                  )),
             ],
           ),
         ),
