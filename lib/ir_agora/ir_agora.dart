@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:moteis_go/components/appbar/custom_appbar.dart';
 import 'package:moteis_go/components/drawer/custom_drawer.dart';
 import 'package:moteis_go/ir_agora/ir_agora_viewmodel.dart';
+import 'package:moteis_go/services/motel_service.dart';
 import 'package:stacked/stacked.dart';
+import 'package:http/http.dart' as http;
 
 class IrAgora extends StatefulWidget {
   const IrAgora({super.key});
@@ -31,7 +33,8 @@ class _ListPageState extends State<IrAgora> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<IrAgoraViewmodel>.reactive(
-      viewModelBuilder: () => IrAgoraViewmodel(),
+      viewModelBuilder: () =>
+          IrAgoraViewmodel(MotelService(client: http.Client())),
       builder: (context, model, child) {
         return Scaffold(
           key: _scaffoldKey,

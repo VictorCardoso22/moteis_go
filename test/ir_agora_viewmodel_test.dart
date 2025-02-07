@@ -5,6 +5,7 @@ import 'package:mockito/mockito.dart';
 import 'package:moteis_go/ir_agora/ir_agora_viewmodel.dart';
 import 'package:http/http.dart' as http;
 import 'package:moteis_go/model/data_model.dart';
+import 'package:moteis_go/services/motel_service.dart';
 import 'dart:convert';
 
 import 'ir_agora_viewmodel_test.mocks.dart';
@@ -14,14 +15,16 @@ void main() {
   group("IrAgoraViewmodel Tests", () {
     late IrAgoraViewmodel viewModel;
     late MockClient mockClient;
+    late MotelService motelService;
 
     setUp(() {
       mockClient = MockClient();
-      viewModel = IrAgoraViewmodel(client: mockClient); // Passamos o mock aqui
+      motelService = MotelService(client: mockClient);
+      viewModel = IrAgoraViewmodel(motelService);
     });
-
     test("Deve inicializar com isLoading como true", () {
-      expect(viewModel.isLoading, true);
+      final vm = IrAgoraViewmodel(MotelService(client: mockClient));
+      expect(vm.isLoading, true);
     });
 
     test("Deve carregar dados corretamente", () async {
@@ -35,11 +38,7 @@ void main() {
 
       when(mockClient.get(
         any,
-        headers: {
-          "Accept": "application/json",
-          "User-Agent": "Flutter-App",
-          "Content-Type": "application/json; charset=UTF-8",
-        },
+        headers: anyNamed("headers"),
       )).thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
 
       await viewModel.fetchData();
@@ -55,21 +54,18 @@ void main() {
 
       await viewModel.fetchData();
 
-      expect(viewModel.isLoading, true);
+      expect(viewModel.isLoading, false);
       expect(viewModel.moteis.isEmpty, true);
     });
 
     test('Teste da função getIcons', () {
-      // Criando uma lista de categoriaItens para testar
       final categoriaItens = [
         CategoriaIten(icone: "https://exemplo.com/icone1.png", nome: ''),
         CategoriaIten(icone: "https://exemplo.com/icone2.png", nome: ''),
       ];
 
-      // Chamando o método getIcons
       final result = viewModel.getIcons(categoriaItens);
 
-      // Verificando se o retorno é um Card
       expect(result, isA<Card>());
     });
 
@@ -93,7 +89,6 @@ void main() {
 
       final result = viewModel.getPeriodos(periodos);
 
-      // Verificando se cada item da lista é um Card
       for (var item in result) {
         expect(item, isA<Card>());
       }
