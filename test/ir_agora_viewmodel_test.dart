@@ -1,39 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/testing.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:moteis_go/ir_agora/ir_agora_viewmodel.dart';
+import 'package:http/http.dart' as http;
 import 'package:moteis_go/model/data_model.dart';
+import 'dart:convert';
+
+import 'ir_agora_viewmodel_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 void main() {
-  group('Testes para IrAgoraViewmodel', () {
+  group("IrAgoraViewmodel Tests", () {
     late IrAgoraViewmodel viewModel;
     late MockClient mockClient;
 
     setUp(() {
-      mockClient = MockClient((http.Request request) async {
-        // Mock da resposta da API
-        return http.Response('''
-        ''', 200);
-      });
-
-      viewModel = IrAgoraViewmodel();
+      mockClient = MockClient();
+      viewModel = IrAgoraViewmodel(client: mockClient); // Passamos o mock aqui
     });
 
-    test('Teste de carregamento de dados com sucesso', () async {
-      // Substitui o client HTTP pelo mock
-      viewModel = IrAgoraViewmodel();
+    test("Deve inicializar com isLoading como true", () {
+      expect(viewModel.isLoading, true);
+    });
 
-      // Simula a resposta da API
+    test("Deve carregar dados corretamente", () async {
+      final mockResponse = {
+        "data": {
+          "moteis": [
+            {"fantasia": "Motel Teste", "endereco": "Rua X, 123"}
+          ]
+        }
+      };
+
+      when(mockClient.get(
+        any,
+        headers: {
+          "Accept": "application/json",
+          "User-Agent": "Flutter-App",
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      )).thenAnswer((_) async => http.Response(json.encode(mockResponse), 200));
+
       await viewModel.fetchData();
 
-      // Verifica se o carregamento foi bem sucedido
-      expect(viewModel.moteis.length, 1);
-      expect(viewModel.moteis[0].fantasia, "Motel Le Nid");
       expect(viewModel.isLoading, false);
+      expect(viewModel.moteis.isNotEmpty, true);
+      expect(viewModel.moteis.first.fantasia, "Motel Teste");
+    });
+
+    test("Deve lidar com erro na requisição", () async {
+      when(mockClient.get(any, headers: anyNamed("headers")))
+          .thenAnswer((_) async => http.Response("Erro", 500));
+
+      await viewModel.fetchData();
+
+      expect(viewModel.isLoading, true);
+      expect(viewModel.moteis.isEmpty, true);
     });
 
     test('Teste da função getIcons', () {

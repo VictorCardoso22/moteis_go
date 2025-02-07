@@ -1,16 +1,52 @@
-# moteis_go
+📱 Moteis GO
 
-A new Flutter project.
+Este projeto consiste em criar uma réplica da tela de listagem de motéis (apenas a aba "Ir Agora") do aplicativo Guia de Motéis GO.
 
-## Getting Started
+✨ Funcionalidades
 
-This project is a starting point for a Flutter application.
+Listagem de motéis com nome, endereço e avaliação.
 
-A few resources to get you started if this is your first Flutter project:
+Exibição de ícones representando as comodidades do motel.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Listagem de períodos disponíveis com valores e tempos formatados.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+🖼️ Preview da Tela
+
+Tela de Listagem de Motéis
+
+🚀 Tecnologias Utilizadas
+
+Flutter: Framework para desenvolvimento multiplataforma.
+
+Stacked: Arquitetura MVVM para gerenciar o estado.
+
+HTTP: Para requisições de API.
+
+Mockito: Para testes unitários com mock de requisições.
+
+🛠️ Como Rodar o Projeto
+
+1️⃣ Clonar o repositório
+
+git clone https://github.com/VictorCardoso22/moteis_go.git
+cd moteis-go
+
+2️⃣ Instalar as dependências
+
+flutter pub get
+
+3️⃣ Rodar o aplicativo
+
+flutter run
+
+✅ Testes
+
+Para rodar os testes unitários:
+
+flutter test
+
+📃 Licença
+
+Este projeto é apenas para fins de teste e não está afiliado oficialmente ao Guia de Motéis GO.
+
+📌 Desenvolvido por Victor Caroso 🚀

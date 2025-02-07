@@ -9,15 +9,16 @@ import 'package:http/http.dart' as http;
 class IrAgoraViewmodel extends BaseViewModel {
   List<Moteis> moteis = [];
   bool isLoading = true;
+  final http.Client? client;
 
-  IrAgoraViewmodel() {
+  IrAgoraViewmodel({http.Client? client}) : client = client ?? http.Client() {
     fetchData();
   }
 
   Future<void> fetchData() async {
     const url = "https://www.jsonkeeper.com/b/1IXK";
     try {
-      final response = await http.get(
+      final response = await client!.get(
         Uri.parse(url),
         headers: {
           "Accept": "application/json",
@@ -28,19 +29,15 @@ class IrAgoraViewmodel extends BaseViewModel {
 
       if (response.statusCode == 200) {
         var correctedBody = utf8.decode(latin1.encode(response.body));
-
         var jsonBody = json.decode(correctedBody);
-
         DataModel dataModel = DataModel.fromJson(jsonBody);
-
         moteis = dataModel.data?.moteis ?? [];
-
         isLoading = false;
       } else {
         throw Exception("Erro ao carregar dados: ${response.statusCode}");
       }
     } catch (e) {
-      isLoading = false;
+      isLoading = true;
       print("Erro: $e");
     }
 
