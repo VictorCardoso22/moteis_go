@@ -30,6 +30,7 @@ cd moteis_go
 
 2️⃣ Instalar as dependências
 ```sh
+flutter clean
 flutter pub get
 ```
 
