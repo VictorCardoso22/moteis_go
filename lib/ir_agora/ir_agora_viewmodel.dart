@@ -2,49 +2,10 @@ import 'package:moteis_go/model/data_model.dart';
 import 'package:moteis_go/services/motel_service.dart';
 import 'package:stacked/stacked.dart';
 
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class IrAgoraViewmodel extends BaseViewModel {
-  // List<Moteis> moteis = [];
-  // bool isLoading = true;
-  // final http.Client? client;
-
-  // IrAgoraViewmodel({http.Client? client}) : client = client ?? http.Client() {
-  //   fetchData();
-  // }
-
-  // Future<void> fetchData() async {
-  //   const url = "https://www.jsonkeeper.com/b/1IXK";
-  //   try {
-  //     final response = await client!.get(
-  //       Uri.parse(url),
-  //       headers: {
-  //         "Accept": "application/json",
-  //         "User-Agent": "Flutter-App",
-  //         "Content-Type": "application/json; charset=UTF-8",
-  //       },
-  //     );
-
-  //     if (response.statusCode == 200) {
-  //       var correctedBody = utf8.decode(latin1.encode(response.body));
-  //       var jsonBody = json.decode(correctedBody);
-  //       DataModel dataModel = DataModel.fromJson(jsonBody);
-  //       moteis = dataModel.data?.moteis ?? [];
-  //       isLoading = false;
-  //     } else {
-  //       throw Exception("Erro ao carregar dados: ${response.statusCode}");
-  //     }
-  //   } catch (e) {
-  //     isLoading = true;
-  //     print("Erro: $e");
-  //   }
-
-  //   notifyListeners();
-  // }
-
   final MotelService _motelService;
   List<Moteis> moteis = [];
   bool isLoading = true;
@@ -69,12 +30,12 @@ class IrAgoraViewmodel extends BaseViewModel {
 
   getIcons(List<CategoriaIten> categoriaItens) {
     List icones = [];
-    categoriaItens.forEach((element) {
+    for (var element in categoriaItens) {
       icones.add(element.icone.isNotEmpty
           ? Image.network(element.icone,
               width: 46, height: 46, fit: BoxFit.cover)
           : const Icon(Icons.image_not_supported));
-    });
+    }
     return Card(
       color: Colors.white,
       shape: RoundedRectangleBorder(

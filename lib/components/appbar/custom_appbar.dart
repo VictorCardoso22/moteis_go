@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:moteis_go/components/appbar/widgets/app_toggle_buttons.dart';
-import 'package:moteis_go/components/appbar/widgets/button.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String location;
@@ -9,12 +8,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
 
   const CustomAppBar({
-    Key? key,
+    super.key,
     required this.location,
     required this.activeButton,
     required this.onToggle,
     required this.scaffoldKey,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

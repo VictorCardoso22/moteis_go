@@ -71,7 +71,7 @@ class Data {
         "totalMoteis": totalMoteis,
         "raio": raio,
         "maxPaginas": maxPaginas,
-        "moteis": moteis.map((x) => x?.toJson()).toList(),
+        "moteis": moteis.map((x) => x.toJson()).toList(),
       };
 
   @override
@@ -122,7 +122,7 @@ class Moteis {
         "bairro": bairro,
         "distancia": distancia,
         "qtdFavoritos": qtdFavoritos,
-        "suites": suites.map((x) => x?.toJson()).toList(),
+        "suites": suites.map((x) => x.toJson()).toList(),
         "qtdAvaliacoes": qtdAvaliacoes,
         "media": media,
       };
@@ -179,9 +179,9 @@ class Suite {
         "qtd": qtd,
         "exibirQtdDisponiveis": exibirQtdDisponiveis,
         "fotos": fotos.map((x) => x).toList(),
-        "itens": itens.map((x) => x?.toJson()).toList(),
-        "categoriaItens": categoriaItens.map((x) => x?.toJson()).toList(),
-        "periodos": periodos.map((x) => x?.toJson()).toList(),
+        "itens": itens.map((x) => x.toJson()).toList(),
+        "categoriaItens": categoriaItens.map((x) => x.toJson()).toList(),
+        "periodos": periodos.map((x) => x.toJson()).toList(),
       };
 
   @override
